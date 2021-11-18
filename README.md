@@ -6,15 +6,15 @@ Prerequisites are `cmake` and `g++` with versions as specified in `CMakeLists.tx
 
 To build:
 
-    mdkir build
+    mkdir build
     cd build
-    cmake ..
-    make all
+    cmake -B build
+    make -C build
 
 To run the tests run (from `build`):
 
     ctest
 
-To run, add the resource files to `res/` and then run (from `build`
+To run, add the resource files to `res/` and then run (from `build`)
 
     ./aoc2021
