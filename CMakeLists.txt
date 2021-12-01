@@ -23,5 +23,5 @@ add_executable(aoc2021
     aoc2021.cpp)
 target_link_libraries(
     aoc2021
-    dayexample
+    day1
     )
