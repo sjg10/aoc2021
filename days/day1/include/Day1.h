@@ -9,6 +9,4 @@ class Day1 : public Day {
          * Aggregate the sums over given window size
          */
         unsigned int countIncreases(std::istream &depths, unsigned int window_size = 1);
-    private:
-        int example_value;
 };

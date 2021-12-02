@@ -24,4 +24,5 @@ add_executable(aoc2021
 target_link_libraries(
     aoc2021
     day1
+    day2
     )
