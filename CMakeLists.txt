@@ -25,4 +25,5 @@ target_link_libraries(
     aoc2021
     day1
     day2
+    day3
     )
