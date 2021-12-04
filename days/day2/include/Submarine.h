@@ -6,9 +6,9 @@ class Submarine  {
     public:
         Submarine() {};
         /** Move the submarine according to an instruction intepreted basically */
-        void move_basic(std::string move_command);
+        void moveBasic(std::string move_command);
         /** Move the submarine according to an instruction intepreted as an aim command */
-        void move_aimed(std::string move_command);
+        void moveAimed(std::string move_command);
         /** Get the representation of the submarine location */
         int getLocation();
     private:

@@ -3,7 +3,7 @@
 #include "Submarine.h"
 
 
-void Submarine::move_basic(std::string move_command) {
+void Submarine::moveBasic(std::string move_command) {
     auto space_idx = move_command.find(" ");
     int quantity = std::stoi(move_command.substr(space_idx + 1));
     std::string direction = move_command.substr(0, space_idx);
@@ -13,7 +13,7 @@ void Submarine::move_basic(std::string move_command) {
     else {throw std::runtime_error("unknown direction from string "+ move_command);}
 }
 
-void Submarine::move_aimed(std::string move_command) {
+void Submarine::moveAimed(std::string move_command) {
     auto space_idx = move_command.find(" ");
     int quantity = std::stoi(move_command.substr(space_idx + 1));
     std::string direction = move_command.substr(0, space_idx);

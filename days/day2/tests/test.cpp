@@ -4,19 +4,19 @@
 
 TEST(Day2Test, SubmarineMove) {
     auto s = Submarine();
-    s.move_basic("down 2");
-    s.move_basic("forward 7");
+    s.moveBasic("down 2");
+    s.moveBasic("forward 7");
     EXPECT_EQ(s.getLocation(), 14);
-    s.move_basic("up 1");
+    s.moveBasic("up 1");
     EXPECT_EQ(s.getLocation(), 7);
-    s.move_basic("up 2");
+    s.moveBasic("up 2");
     EXPECT_EQ(s.getLocation(), -7);
 }
 
 TEST(Day2Test, SubmarineAimed) {
     auto s = Submarine();
-    s.move_aimed("down 2");
-    s.move_aimed("forward 7");
+    s.moveAimed("down 2");
+    s.moveAimed("forward 7");
     EXPECT_EQ(s.getLocation(), 98);
 }
 

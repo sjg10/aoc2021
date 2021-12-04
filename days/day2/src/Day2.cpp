@@ -18,8 +18,8 @@ std::pair<int,int> Day2::findLocation(std::istream &instructions) {
     auto s1 = Submarine();
     auto s2 = Submarine();
     for(std::string read_string; std::getline(instructions, read_string);) {
-        s1.move_basic(read_string);
-        s2.move_aimed(read_string);
+        s1.moveBasic(read_string);
+        s2.moveAimed(read_string);
     }
     return {s1.getLocation(), s2.getLocation()};
 }
