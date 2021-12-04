@@ -33,7 +33,7 @@ std::pair<unsigned int,unsigned int> Day4::playBingo(std::istream &input) {
         }
     }
     cards.push_back(std::make_unique<BingoCard>(card_builder)); // add final card
-    unsigned int first_score;
+    unsigned int first_score = 0;
     unsigned int wins = 0;
     // Play the games
     std::stringstream ss(moves_line);
