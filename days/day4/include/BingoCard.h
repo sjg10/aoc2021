@@ -10,6 +10,5 @@ class BingoCard {
         bool checkWin();
         void computeScore(unsigned int turn);
         std::vector<std::vector<unsigned int>> m_card;
-        std::vector<std::vector<bool>> m_found;
         unsigned int m_score = 0; // non zero indicates terminated
 };
