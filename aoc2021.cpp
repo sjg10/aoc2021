@@ -3,6 +3,7 @@
 #include "Day2.h"
 #include "Day3.h"
 #include "Day4.h"
+#include "Day5.h"
 #include <iostream>
 
 int main(void) {
@@ -22,6 +23,10 @@ int main(void) {
     auto day4 = std::make_unique<Day4>();
     day4->run({"../res/day4.txt"});
     day4.reset();
+
+    auto day5 = std::make_unique<Day5>();
+    day5->run({"../res/day5.txt"});
+    day5.reset();
     //More days go here, with their resources from res.
     std::cout << "AOC2021 Complete" << std::endl;
 
