@@ -3,13 +3,14 @@
 #include "Day7.h"
 
 
-void Day7::run(std::vector<std::string> res_files) {
-    std::cout << "Day 7 run" << std::endl;
+std::vector<std::string> Day7::run(std::vector<std::string> res_files) {
+    std::vector<std::string> out;
     std::ifstream is1(res_files[0]);
     if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
     auto res = getFuel(is1);
-    std::cout << "Day 7 Part 1: " <<  res.first << std::endl;
-    std::cout << "Day 7 Part 2: " <<  res.second << std::endl;
+    out.push_back(std::to_string(res.first));
+    out.push_back(std::to_string(res.second));
+    return out;
 }
 
 std::pair<unsigned long int, unsigned long int> Day7::getFuel(std::istream &input) {

@@ -4,13 +4,14 @@
 #include "Submarine.h"
 
 
-void Day2::run(std::vector<std::string> res_files) {
-    std::cout << "Day 2 run" << std::endl;
+std::vector<std::string> Day2::run(std::vector<std::string> res_files) {
+    std::vector<std::string> out;
     std::ifstream is1(res_files[0]);
     if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
     auto locs = findLocation(is1);
-    std::cout << "Day 2 Part 1: " <<  locs.first << std::endl;
-    std::cout << "Day 2 Part 2: " <<  locs.second << std::endl;
+    out.push_back(std::to_string(locs.first));
+    out.push_back(std::to_string(locs.second));
+    return out;
 }
 
 

@@ -7,5 +7,5 @@ class Day {
         Day() {};
         void runday(std::vector<std::string> res_files);
     protected:
-        virtual void run(std::vector<std::string> res_files) = 0;
+        virtual std::vector<std::string> run(std::vector<std::string> res_files) = 0;
 };

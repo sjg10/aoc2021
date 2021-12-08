@@ -4,15 +4,16 @@
 #include "Day3.h"
 
 
-void Day3::run(std::vector<std::string> res_files) {
-    std::cout << "Day 3 run" << std::endl;
+std::vector<std::string>  Day3::run(std::vector<std::string> res_files) {
+    std::vector<std::string> out;
     std::ifstream is1(res_files[0]);
     if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    std::cout << "Day 3 Part 1: " <<  getPowerConsumption(is1) << std::endl;
+    out.push_back(std::to_string(getPowerConsumption(is1)));
 
     std::ifstream is2(res_files[0]);
     if(is2.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    std::cout << "Day 3 Part 2: " <<  getLifeSupportRating(is2) << std::endl;
+    out.push_back(std::to_string(getLifeSupportRating(is2)));
+    return out;
 }
 
 unsigned int Day3::getPowerConsumption(std::istream &status) {

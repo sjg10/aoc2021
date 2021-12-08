@@ -3,14 +3,15 @@
 #include "Day1.h"
 
 
-void Day1::run(std::vector<std::string> res_files) {
-    std::cout << "Day 1 run" << std::endl;
+std::vector<std::string> Day1::run(std::vector<std::string> res_files) {
+    std::vector<std::string> out;
     std::ifstream is1(res_files[0]);
     if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    std::cout << "Day 1 Part 1: " << countIncreases(is1)  << std::endl;
+    out.push_back(std::to_string(countIncreases(is1)));
     std::ifstream is2(res_files[0]);
     if(is2.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    std::cout << "Day 1 Part 2: " << countIncreases(is2, 3)  << std::endl;
+    out.push_back(std::to_string(countIncreases(is2, 3)));
+    return out;
 }
 
 unsigned int Day1::countIncreases(std::istream &depths, unsigned int window_size) {
