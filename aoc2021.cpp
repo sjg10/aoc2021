@@ -8,6 +8,7 @@
 #include "Day6.h"
 #include "Day7.h"
 #include "Day8.h"
+#include "Day9.h"
 #include <iostream>
 
 /** Map of day name to (dayprocessor, day resources) */
@@ -20,6 +21,7 @@ std::map<std::string, std::pair<std::shared_ptr<Day>, std::vector<std::string>>>
     {"Day6", {std::make_shared<Day6>(), {"../res/day6.txt"}}},
     {"Day7", {std::make_shared<Day7>(), {"../res/day7.txt"}}},
     {"Day8", {std::make_shared<Day8>(), {"../res/day8.txt"}}},
+    {"Day9", {std::make_shared<Day9>(), {"../res/day9.txt"}}},
 };
 
 int main(void) {
