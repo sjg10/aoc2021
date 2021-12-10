@@ -9,26 +9,33 @@
 #include "Day7.h"
 #include "Day8.h"
 #include "Day9.h"
+#include "Day10.h"
 #include <iostream>
-
-/** Map of day name to (dayprocessor, day resources) */
-std::map<std::string, std::pair<std::shared_ptr<Day>, std::vector<std::string>>> days = {
-    {"Day1", {std::make_shared<Day1>(), {"../res/day1.txt"}}},
-    {"Day2", {std::make_shared<Day2>(), {"../res/day2.txt"}}},
-    {"Day3", {std::make_shared<Day3>(), {"../res/day3.txt"}}},
-    {"Day4", {std::make_shared<Day4>(), {"../res/day4.txt"}}},
-    {"Day5", {std::make_shared<Day5>(), {"../res/day5.txt"}}},
-    {"Day6", {std::make_shared<Day6>(), {"../res/day6.txt"}}},
-    {"Day7", {std::make_shared<Day7>(), {"../res/day7.txt"}}},
-    {"Day8", {std::make_shared<Day8>(), {"../res/day8.txt"}}},
-    {"Day9", {std::make_shared<Day9>(), {"../res/day9.txt"}}},
+//Collected info for a day
+struct DayDesc {
+    std::string name;
+    std::shared_ptr<Day> day;
+    std::vector<std::string> res_files;
+} ;
+/** Register of days to run */
+std::vector<DayDesc> days = {
+    {"Day1", std::make_shared<Day1>(), {"../res/day1.txt"}},
+    {"Day2", std::make_shared<Day2>(), {"../res/day2.txt"}},
+    {"Day3", std::make_shared<Day3>(), {"../res/day3.txt"}},
+    {"Day4", std::make_shared<Day4>(), {"../res/day4.txt"}},
+    {"Day5", std::make_shared<Day5>(), {"../res/day5.txt"}},
+    {"Day6", std::make_shared<Day6>(), {"../res/day6.txt"}},
+    {"Day7", std::make_shared<Day7>(), {"../res/day7.txt"}},
+    {"Day8", std::make_shared<Day8>(), {"../res/day8.txt"}},
+    {"Day9", std::make_shared<Day9>(), {"../res/day9.txt"}},
+    {"Day10", std::make_shared<Day10>(), {"../res/day10.txt"}},
 };
 
 int main(void) {
     std::cout << "AOC2021 Start" << std::endl;
     for (auto const &day : days) {
-        std::cout << day.first << " Start" << std::endl;
-        day.second.first->runday(day.second.second);
+        std::cout << day.name << " Start" << std::endl;
+        day.day->runday(day.res_files);
     }
     std::cout << "AOC2021 Complete" << std::endl;
 
