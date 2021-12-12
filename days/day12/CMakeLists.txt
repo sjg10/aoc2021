@@ -1,5 +1,6 @@
 add_library(day12 STATIC
     src/Day12.cpp
+    src/CaveMap.cpp
 )
 target_include_directories(day12 BEFORE
     PUBLIC include
