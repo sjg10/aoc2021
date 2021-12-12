@@ -8,8 +8,8 @@ To build:
 
     mkdir build
     cd build
-    cmake -B build
-    make -C build
+    cmake ..
+    make
 
 To run the tests run (from `build`):
 
