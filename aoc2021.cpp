@@ -12,6 +12,7 @@
 #include "Day10.h"
 #include "Day11.h"
 #include "Day12.h"
+#include "Day13.h"
 #include <iostream>
 //Collected info for a day
 struct DayDesc {
@@ -33,6 +34,7 @@ std::vector<DayDesc> days = {
     {"Day10", std::make_shared<Day10>(), {"../res/day10.txt"}},
     {"Day11", std::make_shared<Day11>(), {"../res/day11.txt"}},
     {"Day12", std::make_shared<Day12>(), {"../res/day12.txt"}},
+    {"Day13", std::make_shared<Day13>(), {"../res/day13.txt"}},
 };
 
 int main(void) {
