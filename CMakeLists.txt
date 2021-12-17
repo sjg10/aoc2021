@@ -5,7 +5,7 @@ project(aoc2021)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/deps/)
 
 # Setup Compiler
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 
@@ -39,4 +39,5 @@ target_link_libraries(
     day14
     day15
     day16
+    day17
     )
