@@ -1,3 +1,5 @@
+find_package (Threads)
+
 add_library(day19 STATIC
     src/Day19.cpp
     src/Scanner.cpp
@@ -8,6 +10,7 @@ target_include_directories(day19 BEFORE
 target_link_libraries(
   day19
   day
+  ${CMAKE_THREAD_LIBS_INIT}
 )
 
 add_executable(

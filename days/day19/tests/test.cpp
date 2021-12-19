@@ -150,16 +150,6 @@ TEST(Day19, Main) {
 
 
     EXPECT_EQ(ret.first.size(), 79);
-    unsigned int max_dist = 0;
-
-    for(auto const &aloc: ret.second) {
-    for(auto const &bloc: ret.second) {
-        unsigned int dist = std::abs(aloc[0] - bloc[0]) +
-            std::abs(aloc[1] - bloc[1]) +
-            std::abs(aloc[2] - bloc[2]);
-        if (dist > max_dist) { max_dist = dist;}
-    }
-    }    
-    EXPECT_EQ(max_dist, 3621);
+    EXPECT_EQ(Scanner::getMaxManhattanDistance(ret.second), 3621);
 
 }

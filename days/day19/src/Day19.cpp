@@ -20,16 +20,5 @@ std::pair<unsigned int, unsigned int> Day19::findBeacons(std::istream &input) {
         scanners.push_back(Scanner(input));
     }
     auto beacons = Scanner::getAllBeacons(scanners);   
-
-    unsigned int max_dist = 0;
-
-    for(auto const &aloc: beacons.second) {
-    for(auto const &bloc: beacons.second) {
-        unsigned int dist = std::abs(aloc[0] - bloc[0]) +
-            std::abs(aloc[1] - bloc[1]) +
-            std::abs(aloc[2] - bloc[2]);
-        if (dist > max_dist) { max_dist = dist;}
-    }
-    }    
-    return  {beacons.first.size(), max_dist};
+    return  {beacons.first.size(), Scanner::getMaxManhattanDistance(beacons.second)};
 }
