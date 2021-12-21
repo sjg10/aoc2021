@@ -2,7 +2,6 @@
 #include "Day10.h"
 
 TEST(Day10Test, Day10Part1_2) {
-    auto d = Day10();
     std::stringstream in;
     in << "[({(<(())[]>[[{[]{<()<>>\n";
     in << "[(()[<>])]({[<{<<[]>>(\n";
@@ -14,7 +13,7 @@ TEST(Day10Test, Day10Part1_2) {
     in << "[<(<(<(<{}))><([]([]()\n";
     in << "<{([([[(<>()){}]>(<<{{\n";
     in << "<{([{{}}[<[[[<>{}]]]>[]]\n";
-    auto res = d.getSyntax(in);
+    auto res = Day10::getSyntax(in);
     EXPECT_EQ(res.first, 26397);
     EXPECT_EQ(res.second,288957);
 }

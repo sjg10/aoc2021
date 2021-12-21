@@ -3,7 +3,6 @@
 
 
 TEST(Day8Test, Day8Part1_2) {
-    auto d = Day8();
     std::stringstream in;
     in << "be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe\n";
     in << "edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc\n";
@@ -15,15 +14,7 @@ TEST(Day8Test, Day8Part1_2) {
     in << "bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd | ed bcgafe cdgba cbgef\n";
     in << "egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb\n";
     in << "gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce\n";
-    auto res = d.getDigits(in);
+    auto res = Day8::getDigits(in);
     EXPECT_EQ(res.first, 26);
     EXPECT_EQ(res.second,61229);
 }
-/*TEST(Day8Test, singleEntry) {
-    auto d = Day8();
-    std::stringstream in;
-    in << "acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf\n";
-    auto res = d.getDigits(in);
-    EXPECT_EQ(res.first, 26);
-    EXPECT_EQ(res.second,61229);
-}*/

@@ -2,7 +2,6 @@
 #include "Day13.h"
 
 TEST(Day13Test, Day13Part1_2) {
-    auto d = Day13();
     std::stringstream in;
     in << "6,10\n";
     in << "0,14\n";
@@ -25,7 +24,7 @@ TEST(Day13Test, Day13Part1_2) {
     in << "\n";
     in << "fold along y=7\n";
     in << "fold along x=5\n";
-    auto res = d.getFolds(in);
+    auto res = Day13::getFolds(in);
     EXPECT_EQ(res.first, 17);
     std::stringstream out;
     out << "\n";

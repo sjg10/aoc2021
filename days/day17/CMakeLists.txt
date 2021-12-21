@@ -1,5 +1,6 @@
 add_library(day17 STATIC
     src/Day17.cpp
+    src/Probe.cpp
 )
 target_include_directories(day17 BEFORE
     PUBLIC include

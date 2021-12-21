@@ -1,14 +1,11 @@
 #include <iostream>
-#include <fstream>
 #include "Day2.h"
 #include "Submarine.h"
 
 
-std::vector<std::string> Day2::run(std::vector<std::string> res_files) {
+std::vector<std::string> Day2::run(std::ifstream &input) {
     std::vector<std::string> out;
-    std::ifstream is1(res_files[0]);
-    if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    auto locs = findLocation(is1);
+    auto locs = findLocation(input);
     out.push_back(std::to_string(locs.first));
     out.push_back(std::to_string(locs.second));
     return out;

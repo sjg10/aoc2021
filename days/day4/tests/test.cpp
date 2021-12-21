@@ -3,7 +3,6 @@
 
 
 TEST(Day4Test, Day4Part1_2) {
-    auto d = Day4();
     std::stringstream in;
     in << "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1\n";
     in << "\n";
@@ -24,7 +23,7 @@ TEST(Day4Test, Day4Part1_2) {
     in << "18  8 23 26 20\n";
     in << "22 11 13  6  5\n";
     in << " 2  0 12  3  7\n";
-    auto res = d.playBingo(in);
+    auto res = Day4::playBingo(in);
     EXPECT_EQ(res.first,4512);
     EXPECT_EQ(res.second,1924);
 }

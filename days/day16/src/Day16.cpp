@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <set>
 #include <algorithm>
 #include <cmath>
@@ -9,11 +8,9 @@
 #include "Packet.h"
 
 
-std::vector<std::string> Day16::run(std::vector<std::string> res_files) {
+std::vector<std::string> Day16::run(std::ifstream &input) {
     std::vector<std::string> out;
-    std::ifstream is1(res_files[0]);
-    if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    auto res = getMessage(is1);
+    auto res = getMessage(input);
     out.push_back(std::to_string(res.first));
     out.push_back(std::to_string(res.second));
     return out;

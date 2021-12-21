@@ -3,9 +3,9 @@
 
 class Day18 : public Day {
     public:
-        Day18() {};
+        Day18(const std::string &input_filename) : Day(input_filename) {};
         /** Get total sum and largest pairwise sum respecitvely */
-        std::pair<unsigned int,unsigned int> doMaths(std::istream &input);
+        static std::pair<unsigned int,unsigned int> doMaths(std::istream &input);
     private:
-        std::vector<std::string> run(std::vector<std::string> res_files) override;
+        std::vector<std::string> run(std::ifstream &input) override;
 };

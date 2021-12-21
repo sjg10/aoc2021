@@ -3,7 +3,6 @@
 
 
 TEST(Day3Test, Day3Part1) {
-    auto d = Day3();
     std::stringstream in;
     in << "00100\n";
     in << "11110\n";
@@ -17,12 +16,11 @@ TEST(Day3Test, Day3Part1) {
     in << "11001\n";
     in << "00010\n";
     in << "01010\n";
-    EXPECT_EQ(d.getPowerConsumption(in),198);
+    EXPECT_EQ(Day3::getPowerConsumption(in),198);
 }
 
 
 TEST(Day3Test, Day3Part2) {
-    auto d = Day3();
     std::stringstream in;
     in << "00100\n";
     in << "11110\n";
@@ -36,5 +34,5 @@ TEST(Day3Test, Day3Part2) {
     in << "11001\n";
     in << "00010\n";
     in << "01010\n";
-    EXPECT_EQ(d.getLifeSupportRating(in),230);
+    EXPECT_EQ(Day3::getLifeSupportRating(in),230);
 }

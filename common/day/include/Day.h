@@ -1,11 +1,14 @@
 #pragma once
 #include <vector>
-#include <filesystem>
+#include <string>
+#include <fstream>
 		
 class Day {
     public:
-        Day() {};
-        void runday(std::vector<std::string> res_files);
+        Day(const std::string &input_filename);
+        void runday();
     protected:
-        virtual std::vector<std::string> run(std::vector<std::string> res_files) = 0;
+        virtual std::vector<std::string> run(std::ifstream &input) = 0;
+    private:
+        std::ifstream m_stream;
 };

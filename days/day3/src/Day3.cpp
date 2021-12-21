@@ -1,18 +1,13 @@
 #include <iostream>
-#include <fstream>
 #include <algorithm>
 #include "Day3.h"
 
 
-std::vector<std::string>  Day3::run(std::vector<std::string> res_files) {
+std::vector<std::string>  Day3::run(std::ifstream &input) {
     std::vector<std::string> out;
-    std::ifstream is1(res_files[0]);
-    if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    out.push_back(std::to_string(getPowerConsumption(is1)));
-
-    std::ifstream is2(res_files[0]);
-    if(is2.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    out.push_back(std::to_string(getLifeSupportRating(is2)));
+    out.push_back(std::to_string(getPowerConsumption(input)));
+    input.clear(); input.seekg(0);
+    out.push_back(std::to_string(getLifeSupportRating(input)));
     return out;
 }
 

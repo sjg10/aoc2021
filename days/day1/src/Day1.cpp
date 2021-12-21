@@ -1,16 +1,12 @@
 #include <iostream>
-#include <fstream>
 #include "Day1.h"
 
 
-std::vector<std::string> Day1::run(std::vector<std::string> res_files) {
+std::vector<std::string> Day1::run(std::ifstream &input) {
     std::vector<std::string> out;
-    std::ifstream is1(res_files[0]);
-    if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    out.push_back(std::to_string(countIncreases(is1)));
-    std::ifstream is2(res_files[0]);
-    if(is2.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    out.push_back(std::to_string(countIncreases(is2, 3)));
+    out.push_back(std::to_string(countIncreases(input)));
+    input.clear(); input.seekg(0);
+    out.push_back(std::to_string(countIncreases(input, 3)));
     return out;
 }
 

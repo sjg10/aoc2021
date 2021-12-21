@@ -39,8 +39,7 @@ TEST(Day18, Main) {
     in << "[[9,3],[[9,9],[6,[4,9]]]]\n";
     in << "[[2,[[7,7],7]],[[5,8],[[9,3],[0,2]]]]\n";
     in << "[[[[5,2],5],[8,[3,7]]],[[5,[7,5]],[4,4]]]\n";
-    auto d = Day18();
-    auto res = d.doMaths(in);
+    auto res = Day18::doMaths(in);
     EXPECT_EQ(res.first, 4140);
     EXPECT_EQ(res.second, 3993);
     

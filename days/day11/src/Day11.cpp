@@ -1,14 +1,11 @@
 #include <iostream>
-#include <fstream>
 #include "Day11.h"
 #include "OctoMap.h"
 
 
-std::vector<std::string> Day11::run(std::vector<std::string> res_files) {
+std::vector<std::string> Day11::run(std::ifstream &input) {
     std::vector<std::string> out;
-    std::ifstream is1(res_files[0]);
-    if(is1.fail()) {throw std::runtime_error("Could not open file " + res_files[0]);}
-    auto res = getFlashes(is1);
+    auto res = getFlashes(input);
     out.push_back(std::to_string(res.first));
     out.push_back(std::to_string(res.second));
     return out;

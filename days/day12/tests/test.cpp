@@ -2,7 +2,6 @@
 #include "Day12.h"
 
 TEST(Day12Test, Day12_a) {
-    auto d = Day12();
     std::stringstream in;
     in << "start-A\n";
     in << "start-b\n";
@@ -11,13 +10,12 @@ TEST(Day12Test, Day12_a) {
     in << "b-d\n";
     in << "A-end\n";
     in << "b-end\n";
-    auto res = d.getPaths(in);
+    auto res = Day12::getPaths(in);
     EXPECT_EQ(res.first, 10);
     EXPECT_EQ(res.second, 36);
 }
 
 TEST(Day12Test, Day12_b) {
-    auto d = Day12();
     std::stringstream in;
     in << "dc-end\n";
     in << "HN-start\n";
@@ -29,7 +27,7 @@ TEST(Day12Test, Day12_b) {
     in << "kj-sa\n";
     in << "kj-HN\n";
     in << "kj-dc\n";
-    auto res = d.getPaths(in);
+    auto res = Day12::getPaths(in);
     EXPECT_EQ(res.first, 19);
     EXPECT_EQ(res.second, 103);
 }
@@ -37,7 +35,6 @@ TEST(Day12Test, Day12_b) {
 
 
 TEST(Day12Test, Day12_c) {
-    auto d = Day12();
     std::stringstream in;
     in << "fs-end\n";
     in << "he-DX\n";
@@ -57,7 +54,7 @@ TEST(Day12Test, Day12_c) {
     in << "zg-he\n";
     in << "pj-fs\n";
     in << "start-RW\n";
-    auto res = d.getPaths(in);
+    auto res = Day12::getPaths(in);
     EXPECT_EQ(res.first, 226);
     EXPECT_EQ(res.second, 3509);
 }

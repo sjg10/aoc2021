@@ -3,10 +3,10 @@
 
 class Day2 : public Day {
     public:
-        Day2() {};
+        Day2(const std::string &input_filename) : Day(input_filename) {};
         /** Given submarine instruction list, find the location (using basic and aimed interpretations) */
-        std::pair<int,int> findLocation(std::istream &instructions);
+        static std::pair<int,int> findLocation(std::istream &instructions);
     private:
-        std::vector<std::string> run(std::vector<std::string> res_files) override;
+        std::vector<std::string> run(std::ifstream &input) override;
 
 };

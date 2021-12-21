@@ -21,7 +21,6 @@ TEST(Day2Test, SubmarineAimed) {
 }
 
 TEST(Day2Test, Day2Part1_2) {
-    auto d = Day2();
     std::stringstream in;
     in << "forward 5\n";
     in << "down 5\n";
@@ -29,7 +28,7 @@ TEST(Day2Test, Day2Part1_2) {
     in << "up 3\n";
     in << "down 8\n";
     in << "forward 2\n";
-    auto locs = d.findLocation(in);
+    auto locs = Day2::findLocation(in);
     EXPECT_EQ(locs.first,150);
     EXPECT_EQ(locs.second,900);
 }

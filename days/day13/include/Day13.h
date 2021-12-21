@@ -3,9 +3,9 @@
 
 class Day13 : public Day {
     public:
-        Day13() {};
+        Day13(const std::string &input_filename) : Day(input_filename) {};
         /** Get the number of dots after one fold and the final plotted dot map respectively */
-        std::pair<unsigned int,std::string> getFolds(std::istream &input);
+        static std::pair<unsigned int,std::string> getFolds(std::istream &input);
     private:
-        std::vector<std::string> run(std::vector<std::string> res_files) override;
+        std::vector<std::string> run(std::ifstream &input) override;
 };

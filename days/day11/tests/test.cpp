@@ -2,7 +2,6 @@
 #include "Day11.h"
 
 TEST(Day11Test, Day11Part1_2) {
-    auto d = Day11();
     std::stringstream in;
     in << "5483143223\n";
     in << "2745854711\n";
@@ -14,7 +13,7 @@ TEST(Day11Test, Day11Part1_2) {
     in << "6882881134\n";
     in << "4846848554\n";
     in << "5283751526\n";
-    auto res = d.getFlashes(in);
+    auto res = Day11::getFlashes(in);
     EXPECT_EQ(res.first, 1656);
     EXPECT_EQ(res.second,195);
 }

@@ -3,9 +3,9 @@
 
 class Day19 : public Day {
     public:
-        Day19() {};
+        Day19(const std::string &input_filename) : Day(input_filename) {};
         /** Find the number of beacons and the largest scanner distance */
-        std::pair<unsigned int,unsigned int> findBeacons(std::istream &input);
+        static std::pair<unsigned int,unsigned int> findBeacons(std::istream &input);
     private:
-        std::vector<std::string> run(std::vector<std::string> res_files) override;
+        std::vector<std::string> run(std::ifstream &input) override;
 };

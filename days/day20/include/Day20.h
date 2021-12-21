@@ -3,9 +3,9 @@
 
 class Day20 : public Day {
     public:
-        Day20() {};
+        Day20(const std::string &input_filename) : Day(input_filename) {};
         /** Find the pixel count at 2 and 50 enhancements respectively */
-        std::pair<unsigned int,unsigned int> findImage(std::istream &input);
+        static std::pair<unsigned int,unsigned int> findImage(std::istream &input);
     private:
-        std::vector<std::string> run(std::vector<std::string> res_files) override;
+        std::vector<std::string> run(std::ifstream &input) override;
 };

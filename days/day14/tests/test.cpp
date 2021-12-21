@@ -2,7 +2,6 @@
 #include "Day14.h"
 
 TEST(Day14Test, Day14_1) {
-    auto d = Day14();
     std::stringstream in;;
     in << "NNCB\n";
     in << "\n";
@@ -22,7 +21,7 @@ TEST(Day14Test, Day14_1) {
     in << "BC -> B\n";
     in << "CC -> N\n";
     in << "CN -> C\n";
-    auto res = d.getPolymer(in);
+    auto res = Day14::getPolymer(in);
     EXPECT_EQ(res.first, 1588);
     EXPECT_EQ(res.second, 2188189693529);
 }
