@@ -1,10 +1,9 @@
 #include <iostream>
-#include <set>
-#include <algorithm>
 #include <cmath>
-#include <queue>
+#include <map>
 #include <list>
 #include "Day15.h"
+#include "dijkstra.h"
 
 
 std::vector<std::string> Day15::run(std::ifstream &input) {
@@ -15,62 +14,6 @@ std::vector<std::string> Day15::run(std::ifstream &input) {
     return out;
 }
 
-/** Find the shortest distance from top right to bottom left */
-int dijkstra(const std::vector<int> &weights) {
-    int s = sqrt(weights.size());
-    std::vector<int> dists(s*s, std::numeric_limits<int>::max());
-    dists[0] = 0;
-
-    // Use a priority queue of yet to check new adj nodes. Pairs are loc,dist to allow for sorting
-    std::priority_queue< std::pair<int,int>, std::vector<std::pair<int,int>> , std::greater<std::pair<int,int>> > q;   
-    q.push(std::make_pair(dists[0], 0));
-
-    while (!q.empty()) {
-        // Grab the next node with smallest distance from start
-        int u = q.top().second;
-        q.pop();
-        if(u == (s * s) - 1) {
-            return dists[u];
-        }
-
-        /// Check all 4 possible adjacents for shorter paths
-        int x = u % s;
-        int y = u / s;
-        if (x > 0) { // left
-            int v = u - 1;
-            int alt = dists[u] + weights.at(v);
-            if (alt < dists[v]) {
-                dists[v] = alt;
-                q.push(std::make_pair(alt, v));
-            }
-        }
-        if (x < s - 1) { // right
-            int v = u + 1;
-            int alt = dists[u] + weights.at(v);
-            if (alt < dists[v]) {
-                dists[v] = alt;
-                q.push(std::make_pair(alt, v));
-            }
-        }
-        if (y > 0) { // up
-            int v = u - s;
-            int alt = dists[u] + weights.at(v);
-            if (alt < dists[v]) {
-                dists[v] = alt;
-                q.push(std::make_pair(alt, v));
-            }
-        }
-        if (y < s - 1) { // down
-            int v = u + s;
-            int alt = dists[u] + weights.at(v);
-            if (alt < dists[v]) {
-                dists[v] = alt;
-                q.push(std::make_pair(alt, v));
-            }
-        }
-    }      
-    return 0;       
-}
 /** Given a map and an integer m multiply the map up by m */
 std::vector<int> multiplyMap(const std::vector<int> &map, int m) {
     int s = sqrt(map.size());
@@ -91,11 +34,46 @@ std::vector<int> multiplyMap(const std::vector<int> &map, int m) {
     return largemap;
 }
 
+bool win(std::vector<int> const &weights, int* u) {
+    int s = sqrt(weights.size());
+    return *u == (s * s) - 1;
+}
+
+std::map<int, unsigned int> neighbours(std::vector<int> const &weights, int* u) {
+    int s = sqrt(weights.size());
+    int x = *u % s;
+    int y = *u / s;
+    std::map<int, unsigned int>  out;
+    if (x > 0) { // left
+        out[*u - 1] = weights.at(*u - 1);
+    }
+    if (x < s - 1) { // right
+        out[*u + 1] = weights.at(*u + 1);
+    }
+    if (y > 0) { // up
+        out[*u - s] =  weights.at(*u - s);
+    }
+    if (y < s - 1) { // down            
+        out[*u + s] =  weights.at(*u + s);
+    }
+    return out;
+}
+
+              
 std::pair<unsigned int, unsigned int> Day15::getPaths(std::istream &input) {
     std::vector<int> map;
     for(std::string read_line; std::getline(input, read_line);) {
         std::transform(read_line.begin(), read_line.end(), std::back_inserter(map),
                     [](unsigned char c){ return c - '0'; });
     }
-    return  {dijkstra(map), dijkstra(multiplyMap(map,5))};
+    unsigned int small = dijkstra<int>(0, 
+        std::bind(&win, map, std::placeholders::_1),
+        std::bind(&neighbours, map, std::placeholders::_1)
+    );
+    auto large_map = multiplyMap(map,5);
+    unsigned int big = dijkstra<int>(0, 
+        std::bind(&win, large_map, std::placeholders::_1),
+        std::bind(&neighbours, large_map, std::placeholders::_1)
+    );
+    return  {small, big};
 }

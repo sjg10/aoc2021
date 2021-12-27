@@ -8,6 +8,7 @@ target_include_directories(day23 BEFORE
 target_link_libraries(
   day23
   day
+  dijkstra
 )
 
 add_executable(

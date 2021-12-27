@@ -1,5 +1,7 @@
 #include "Burrow.h"
+#include "dijkstra.h"
 #include <queue>
+
 
 template <int N>
 bool BurrowState<N>::isAllHome() const {
@@ -9,6 +11,7 @@ bool BurrowState<N>::isAllHome() const {
         roomD.isAll(D);
 }
 
+/** Get an amphipod from its char rep */
 Amphipod getAmphipod(char c) {
     switch(c) {
         case 'A': return A;
@@ -19,6 +22,7 @@ Amphipod getAmphipod(char c) {
     }
 }
 
+/** Get an char rep from an Amphipod */
 char getAmphipodChar(Amphipod const &a) {
     switch(a) {
         case A: return 'A';
@@ -32,6 +36,7 @@ char getAmphipodChar(Amphipod const &a) {
     }
 }
 
+/** Get the energy needed to move an Amphipod one space */
 int getAmphipodEnergy(Amphipod const &a) {
     switch(a) {
         case A: return 1;
@@ -42,6 +47,7 @@ int getAmphipodEnergy(Amphipod const &a) {
     }
 }
 
+/** Get the hall index for the entrance to an amphipod room */
 int getRoomEntrance(Amphipod const &a) {
     switch(a) {
         case A: return 2;
@@ -410,37 +416,11 @@ std::map<BurrowState<N>, unsigned int> BurrowState<N>::getNeighbours() const {
     return out;
 }
 
-template <int N>
-int dijkstra(BurrowState<N> initial) {
-    std::map<BurrowState<N>, int> dists;
 
-    // Use a priority queue of yet to check new adj nodes. Pairs are loc,dist to allow for sorting
-    std::priority_queue< std::pair<int,BurrowState<N>>, std::vector<std::pair<int,BurrowState<N>>> , std::greater<std::pair<int,BurrowState<N>>> > q;   
-    q.push(std::make_pair(0, initial));
-    dists[initial] = 0;
-
-    while (!q.empty()) {
-        // Grab the next node with smallest distance from start
-        BurrowState<N> u = q.top().second;
-        q.pop();
-        if(u.isAllHome()) { // win
-            return dists[u];
-        }
-
-        /// Check all possible adjacents for shorter paths
-        for (auto const& [v, dist]: u.getNeighbours()) {
-            int alt = dists[u] + dist;
-            if(dists.find(v) == dists.end())  { dists[v] = std::numeric_limits<int>::max(); }
-            if (alt < dists[v]) {
-                dists[v] = alt;
-                q.push(std::make_pair(alt, v));
-            }
-        };
-
-    }      
-    return 0;       
-}
 
 std::pair<unsigned int,unsigned int> Burrow::getMinEnergy() {
-    return {dijkstra(m_initial_1),dijkstra(m_initial_2)};
+    int two = dijkstra<BurrowState<2>>(m_initial_1, std::mem_fn(&BurrowState<2>::isAllHome), std::mem_fn(&BurrowState<2>::getNeighbours));
+    int four = dijkstra<BurrowState<4>>(m_initial_2, std::mem_fn(&BurrowState<4>::isAllHome), std::mem_fn(&BurrowState<4>::getNeighbours));
+
+    return {two,four};
 }
