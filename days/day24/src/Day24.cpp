@@ -56,8 +56,8 @@ std::pair<unsigned long int, unsigned long int> Day24::findModel(std::istream &i
     * If the previous step was case 1, this zold % 26 is that previous w + yin (consider that case 1 "paired")
     * If that previous step wasnt case 1, step backwards through paired case 1's to the first unpaired.
     * That yin+w is zold %26. Fact 6  ensures there was a previous pairing.
-    * This gives us the constraint that for every case 2b (step i) and its paired case 1 (step j)
-    * w_i - xin_i == yin_j + w_j
+    * This gives us the constraint that for every case 2b (step i) and its paired case 1 (step j) (note j<i)
+    * w_i - xin_i == yin_j + w_j hence w_j = w_i - (xin_i + yin_j)
     * 
     */
     std::string read_line;
@@ -105,34 +105,40 @@ std::pair<unsigned long int, unsigned long int> Day24::findModel(std::istream &i
     assert(std::count(divz.begin(), divz.end(), 26) == 7);//assert 5
 
     // find constraints and compute
-    std::vector<std::pair<int,int>> pairs;
     std::vector<int> caseones;
     std::array<int, 14> largest;
+    std::array<int, 14> smallest;
     for(unsigned int i = 0; i < divz.size(); i++) {
         if(divz[i] == 1) {
             caseones.push_back(i);
         }
         else {
-            pairs.push_back({caseones.back(),i});
             int j = caseones.back();
             caseones.pop_back();
-            std::cout << "Constraint: w_" << j << "="<<  "w_" << i << "-" << addx[i] + addy[j]  << std::endl; 
+            // Remembering that w_j = w_i - (xin_i + yin_j) for [j<i]
             if(addx[i] + addy[j] >= 0 ) {
                 largest[i] = 9;
                 largest[j] = 9 - (addx[i] + addy[j]);
+                smallest[j] = 1;
+                smallest[i] = 1 + (addx[i] + addy[j]);
             }
             else {
                 largest[j] = 9;
                 largest[i] = 9 + (addx[i] + addy[j]);
+                smallest[i] = 1;
+                smallest[j] = 1 - (addx[i] + addy[j]);
             }
             //TODO:: smallest for part 2
         }
     }
     unsigned long int part1 = 0;
-    for(auto const &x: largest) {
+    unsigned long int part2 = 0;
+    for(unsigned int i = 0; i < 14; i++) {
         part1 *= 10;
-        part1 += x;
+        part1 += largest[i];
+        part2 *= 10;
+        part2 += smallest[i];
     }
     std::cout << std::endl;
-    return {part1,0};
+    return {part1,part2};
 }
