@@ -46,4 +46,5 @@ target_link_libraries(
     day21
     day22
     day23
+    day24
     )
